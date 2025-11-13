@@ -1,0 +1,279 @@
+# プロジェクト名
+
+このプロジェクトの簡単な説明をここに記載します。
+
+---
+
+## プロジェクト概要
+
+このプロジェクトは [プロジェクトの目的] を実現するための [種類（Webアプリ、APIサーバー、CLIツールなど）] です。
+
+**主な機能:**
+- 機能1
+- 機能2
+- 機能3
+
+---
+
+## 技術スタック
+
+### フロントエンド
+- React 18.2
+- TypeScript 5.0
+- Vite（ビルドツール）
+- TailwindCSS（スタイリング）
+- React Router（ルーティング）
+- Zustand（状態管理）
+
+### バックエンド
+- Node.js 20.x
+- Express 4.18
+- PostgreSQL 15
+- Prisma（ORM）
+
+### テスト
+- Vitest（ユニットテスト）
+- React Testing Library（コンポーネントテスト）
+- Playwright（E2Eテスト）
+
+### その他
+- Docker（コンテナ化）
+- GitHub Actions（CI/CD）
+- ESLint + Prettier（コード品質）
+
+---
+
+## よく使うコマンド
+
+### 開発
+- **開発サーバー起動**: `npm run dev`
+- **開発サーバー（フロントエンド）**: `npm run dev:frontend`
+- **開発サーバー（バックエンド）**: `npm run dev:backend`
+
+### ビルド
+- **ビルド**: `npm run build`
+- **プロダクションビルド**: `npm run build:prod`
+
+### テスト
+- **全テスト実行**: `npm test`
+- **ユニットテスト**: `npm run test:unit`
+- **統合テスト**: `npm run test:integration`
+- **E2Eテスト**: `npm run test:e2e`
+- **テストカバレッジ**: `npm run test:coverage`
+- **ウォッチモード**: `npm run test:watch`
+
+### コード品質
+- **Lint実行**: `npm run lint`
+- **Lintエラー自動修正**: `npm run lint:fix`
+- **型チェック**: `npm run type-check`
+- **フォーマット**: `npm run format`
+
+### データベース
+- **マイグレーション実行**: `npm run db:migrate`
+- **マイグレーション作成**: `npm run db:migrate:create [name]`
+- **シード実行**: `npm run db:seed`
+- **データベースリセット**: `npm run db:reset`
+
+### デプロイ
+- **ステージング環境にデプロイ**: `npm run deploy:staging`
+- **本番環境にデプロイ**: `npm run deploy:prod`
+
+---
+
+## ディレクトリ構造
+
+```
+project-root/
+├── src/
+│   ├── components/          # 再利用可能なUIコンポーネント
+│   │   ├── atoms/          # 最小単位のコンポーネント
+│   │   ├── molecules/      # atomsの組み合わせ
+│   │   ├── organisms/      # moleculesの組み合わせ
+│   │   └── templates/      # ページのレイアウト
+│   ├── pages/              # ページコンポーネント（ルーティング）
+│   ├── hooks/              # カスタムHooks
+│   ├── utils/              # ユーティリティ関数
+│   ├── services/           # APIクライアント、外部サービス連携
+│   ├── types/              # TypeScript型定義
+│   ├── styles/             # グローバルスタイル、CSS変数
+│   ├── contexts/           # React Context
+│   ├── stores/             # 状態管理（Zustand）
+│   ├── constants/          # 定数定義
+│   └── tests/              # テストファイル
+├── public/                 # 静的ファイル
+├── docs/                   # プロジェクトドキュメント
+└── scripts/                # ビルド・デプロイスクリプト
+```
+
+---
+
+## コーディング規約
+
+### 命名規則
+- **変数・関数**: キャメルケース（例: `getUserName`, `isActive`）
+- **コンポーネント**: パスカルケース（例: `UserProfile`, `TaskList`）
+- **定数**: アッパースネークケース（例: `MAX_COUNT`, `API_URL`）
+- **ファイル名（コンポーネント）**: パスカルケース（例: `UserProfile.tsx`）
+- **ファイル名（その他）**: ケバブケース（例: `format-date.ts`）
+- **CSSモジュール**: ケバブケース（例: `user-profile.module.css`）
+
+### 関数
+- **関数名**: 動詞で始める（例: `fetchUser`, `handleClick`, `isValid`）
+- **Boolean関数**: `is`, `has`, `should` で始める（例: `isLoggedIn`, `hasPermission`）
+- **イベントハンドラ**: `handle` で始める（例: `handleSubmit`, `handleChange`）
+
+### スタイル
+- **インデント**: スペース2つ
+- **文字列リテラル**: シングルクォート（`'`）を使用
+- **セミコロン**: 必須
+- **行の長さ**: 最大100文字
+- **コメント**: 日本語でOK（わかりやすい説明を心がける）
+
+### Reactのルール
+- **Functional Componentを使用**: クラスコンポーネントは使わない
+- **Hooksを積極的に活用**: useState, useEffect, useCallback, useMemoなど
+- **PropTypesではなくTypeScriptの型定義**: 型安全性を確保
+- **デフォルトエクスポートよりも名前付きエクスポート**: インポートの一貫性
+- **コンポーネントの分割**: 1ファイル1コンポーネントを原則とする
+
+### TypeScript
+- **明示的な型定義**: 型推論に頼らず、明示的に型を定義
+- **anyの使用禁止**: どうしても必要な場合は`unknown`を使用
+- **nullチェック**: Optional Chaining（`?.`）とNullish Coalescing（`??`）を活用
+- **インターフェースよりType**: 一貫性のためTypeを使用
+
+---
+
+## 設計パターン・アーキテクチャ
+
+### コンポーネント設計
+- **Atomic Design原則**: atoms → molecules → organisms → templates → pages
+- **責務の分離**: プレゼンテーションとロジックを分離
+- **再利用性**: 汎用的なコンポーネントは`components/`に配置
+
+### 状態管理
+- **グローバル状態**: Zustandを使用
+- **サーバー状態**: React Queryを使用（キャッシング、自動再取得）
+- **フォーム状態**: React Hook Formを使用
+- **ローカル状態**: useStateを使用
+
+### API通信
+- **すべてのAPI呼び出しは`src/services/`に集約**
+- **エラーハンドリング**: 共通関数`handleApiError()`を使用
+- **リクエストのキャンセル**: AbortControllerを使用
+
+### エラーハンドリング
+- **グローバルエラーバウンダリ**: React Error Boundaryを使用
+- **APIエラー**: 適切なHTTPステータスコードとエラーメッセージを返す
+- **ユーザーフレンドリーなエラーメッセージ**: 技術的な詳細は隠す
+
+---
+
+## 環境変数
+
+### 開発環境（`.env.development`）
+```
+VITE_API_URL=http://localhost:3000/api
+VITE_APP_ENV=development
+```
+
+### 本番環境（`.env.production`）
+```
+VITE_API_URL=https://api.example.com
+VITE_APP_ENV=production
+```
+
+**注意:**
+- 環境変数ファイルはGitにコミットしない（`.gitignore`に追加済み）
+- `.env.example`をコピーして使用すること
+
+---
+
+## テスト戦略
+
+### カバレッジ目標
+- **全体**: 80%以上
+- **重要なビジネスロジック**: 100%
+
+### テストの種類
+1. **ユニットテスト**: 個別の関数・コンポーネントのテスト
+2. **統合テスト**: 複数のコンポーネント・モジュールの連携テスト
+3. **E2Eテスト**: ユーザーシナリオ全体のテスト
+
+### テストファイルの配置
+- **コロケーション**: テスト対象ファイルと同じディレクトリに配置
+- **ファイル名**: `[filename].test.ts` または `[filename].spec.ts`
+
+---
+
+## 注意事項・制約
+
+### ブラウザサポート
+- Chrome（最新版）
+- Firefox（最新版）
+- Safari（最新版）
+- Edge（最新版）
+- **IE11はサポートしない**
+
+### パフォーマンス
+- **画像ファイル**: 必ず最適化してから使用（WebP推奨）
+- **バンドルサイズ**: 1MB以下を目標
+- **初期ロード時間**: 3秒以内を目標
+
+### セキュリティ
+- **認証トークン**: LocalStorageではなくHttpOnly Cookieに保存
+- **XSS対策**: ユーザー入力は必ずサニタイズ
+- **CSRF対策**: CSRFトークンを使用
+
+### API制限
+- **レート制限**: 1分あたり60リクエスト
+- **ファイルアップロード**: 最大10MB
+
+---
+
+## Git運用
+
+### ブランチ戦略
+- **main**: 本番環境
+- **develop**: 開発環境
+- **feature/xxx**: 新機能開発
+- **fix/xxx**: バグ修正
+- **hotfix/xxx**: 緊急修正
+
+### コミットメッセージ
+プレフィックスを使用:
+- `feat:` 新機能
+- `fix:` バグ修正
+- `docs:` ドキュメント変更
+- `style:` コードスタイル変更（動作に影響なし）
+- `refactor:` リファクタリング
+- `test:` テスト追加・修正
+- `chore:` ビルドプロセスやツールの変更
+
+**例:**
+```
+feat: ユーザープロフィール編集機能を追加
+fix: ログイン時のバリデーションエラーを修正
+docs: README にセットアップ手順を追加
+```
+
+---
+
+## デプロイ
+
+### ステージング環境
+- URL: https://staging.example.com
+- 自動デプロイ: `develop`ブランチへのマージ時
+
+### 本番環境
+- URL: https://example.com
+- 手動デプロイ: GitHub Actionsから実行
+
+---
+
+## 参考リンク
+
+- [公式ドキュメント](https://docs.example.com)
+- [APIドキュメント](https://api.example.com/docs)
+- [デザインシステム](https://design.example.com)
+- [Figma](https://figma.com/file/xxx)
